@@ -5,6 +5,7 @@ def safeExtGet(prop, fallback) {
 }
 
 android {
+    namespace = "com.ocetnik.timer"
     compileSdkVersion safeExtGet('compileSdkVersion', 28)
     
     defaultConfig {

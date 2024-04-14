@@ -12,9 +12,26 @@
 @implementation RNBackgroundTimer {
     UIBackgroundTaskIdentifier bgTask;
     int delay;
+    int listenerCount;
 }
 
 RCT_EXPORT_MODULE()
+
+RCT_EXPORT_METHOD(addListener:(NSString *)eventName)
+{
+  if (listenerCount == 0) {
+    // Set up any upstream listeners or background tasks as necessary
+  }
+  listenerCount += 1;
+}
+
+RCT_EXPORT_METHOD(removeListeners:(double)count) 
+{
+  listenerCount -= count;
+  if (listenerCount == 0) {
+    // Remove upstream listeners, stop unnecessary background tasks
+  }
+}
 
 - (NSArray<NSString *> *)supportedEvents { return @[@"backgroundTimer", @"backgroundTimer.timeout"]; }
 
